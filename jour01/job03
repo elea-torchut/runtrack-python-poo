@@ -2,14 +2,20 @@ class Operation:
     def __init__(self, nombre1=12, nombre2=3):
         self.nombre1 = nombre1
         self.nombre2 = nombre2
+        self.add = 0
+
+    def addition(self):
+        self.add = self.nombre1 + self.nombre2
 
     def getNumber(self):
         print("Le nombre1 est ", self.nombre1)
         print("Le nombre2 est ", self.nombre2)
+        print("Le resultat de l'addition de ", self.nombre1, "et de ", self.nombre2, "est de ", self.add )
 
 # Instanciation de la classe
 operation_instance = Operation()
 
+operation_instance.addition()
+
 # Impression de l'objet en console
-number = Operation()
-number.getNumber()
+operation_instance.getNumber()

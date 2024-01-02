@@ -11,5 +11,4 @@ class Operation:
 operation_instance = Operation()
 
 # Impression de l'objet en console
-number = Operation()
-number.getNumber()
+operation_instance.getNumber()
