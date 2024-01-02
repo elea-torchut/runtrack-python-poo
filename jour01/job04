@@ -1,0 +1,19 @@
+class Personne:
+    def __init__(self, nom, prenom):
+        self.nom = nom
+        self.prenom = prenom
+
+    def SePresenter(self):
+        print("Je suis", self.nom, self.prenom)
+
+# Instanciation de la classe
+crystal = Personne("Crystal", "Destailleurs")
+david = Personne("David", "Peyre")
+elea = Personne("Elea", "Torchut")
+thomas = Personne("Thomas", "Cerruti")
+
+# Impression de l'objet en console
+crystal.SePresenter()
+david.SePresenter()
+elea.SePresenter()
+thomas.SePresenter()

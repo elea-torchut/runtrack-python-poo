@@ -1,0 +1,30 @@
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def afficherLesPoints(self):
+        print("Les coordonnées sont les suivantes: x =", self.x, "et y =", self.y)
+    
+    def afficherX(self):
+        print("x =", self.x)
+
+    def afficherY(self):
+        print("y =", self.y)
+
+    def changerX(self):
+        newX = int(input("Veuillez entrez la valeur de x:"))
+        self.x = newX
+
+    def changerY(self):
+        newY = int(input("Veuillez entrez la valeur de y:"))
+        self.y = newY
+
+operation_instance = Point()
+
+operation_instance.afficherLesPoints()
+operation_instance.afficherX()
+operation_instance.afficherY()
+operation_instance.changerX()
+operation_instance.changerY()
+operation_instance.afficherLesPoints()
