@@ -1,0 +1,46 @@
+import math
+
+class Cercle:
+    def __init__(self, rayon=0):
+        self.rayon = rayon
+        self.circonference = 0
+        self.Aire = 0
+        self.diametre = 0
+        self.circonférence()
+        self.aire()
+
+    def afficherInfos(self):
+        print("Le rayon est de", self.rayon)
+        print("La circonférence est de", self.circonference)
+        print("L'aire est de", self.Aire)
+        print("Le diametre est de", self.diametre)
+
+    def changerRayon(self):
+        newRayon = int(input("Veuillez rentrer la valeur du rayon :"))
+        self.rayon = newRayon
+        self.circonférence()
+        self.aire()
+
+    def circonférence(self):
+        self.circonference = 2 * math.pi * self.rayon
+
+    def aire(self):
+        self.Aire = pow(self.rayon, 2) * math.pi
+
+# Exemple d'utilisation de la classe Cercle
+cercle = Cercle()
+cercle4 = Cercle(4)
+cercle7 = Cercle(7)
+
+# Afficher les informations initiales
+cercle.afficherInfos()
+
+# Changer le rayon
+cercle.changerRayon()
+
+# Afficher les informations après le changement de rayon
+cercle.afficherInfos()
+
+# Cercles avec un diamettre de 4 et de 7
+cercle4.afficherInfos()
+cercle7.afficherInfos()
