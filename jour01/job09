@@ -1,0 +1,50 @@
+class Produit:
+    def __init__(self, nom, prixHT, TVA):
+        self.nom = nom
+        self.prixHT = prixHT
+        self.TVA = TVA
+
+    def calculerPrixTTC(self):
+        return self.prixHT * (1 + self.TVA / 100)
+
+    def afficher(self):
+        return f"Nom du produit : {self.nom}, Prix HT : {self.prixHT}, TVA : {self.TVA}"
+
+    def modifierNom(self, nouveauNom):
+        self.nom = nouveauNom
+
+    def modifierPrixHT(self, nouveauPrixHT):
+        self.prixHT = nouveauPrixHT
+
+    def getNom(self):
+        return self.nom
+
+    def getPrixHT(self):
+        return self.prixHT
+
+    def getTVA(self):
+        return self.TVA
+
+
+# Création de produits
+produit1 = Produit("Ordinateur", 800, 20)
+produit2 = Produit("Téléphone", 500, 15)
+
+# Affichage des informations initiales
+print(produit1.afficher())
+print("Prix TTC du produit 1 :", produit1.calculerPrixTTC())
+print(produit2.afficher())
+print("Prix TTC du produit 2 :", produit2.calculerPrixTTC())
+
+# Modification du nom et du prix des produits
+produit1.modifierNom("Laptop")
+produit1.modifierPrixHT(900)
+produit2.modifierNom("Smartphone")
+produit2.modifierPrixHT(600)
+
+# Affichage des informations après la modification
+print("\nInformations après la modification :")
+print(produit1.afficher())
+print("Nouveau prix TTC du produit 1 :", produit1.calculerPrixTTC())
+print(produit2.afficher())
+print("Nouveau prix TTC du produit 2 :", produit2.calculerPrixTTC())
