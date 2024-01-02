@@ -13,11 +13,11 @@ class Point:
         print("y =", self.y)
 
     def changerX(self):
-        newX = int(input("Veuillez entrez la valeur de x:"))
+        newX = int(input("Veuillez entrer la valeur de x:"))
         self.x = newX
 
     def changerY(self):
-        newY = int(input("Veuillez entrez la valeur de y:"))
+        newY = int(input("Veuillez entrer la valeur de y:"))
         self.y = newY
 
 operation_instance = Point()
