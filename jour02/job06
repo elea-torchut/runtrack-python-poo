@@ -1,0 +1,53 @@
+class Commande:
+    def __init__(self, numero_commande):
+        self.__numero_commande = numero_commande
+        self.__plats_commandes = {}  # Dictionnaire avec les noms des plats, le prix et le statut
+        self.__statut_commande = "en cours"
+
+    def ajouter_plat(self, nom_plat, prix_plat):
+        if nom_plat not in self.__plats_commandes:
+            self.__plats_commandes[nom_plat] = {"prix": prix_plat, "statut": "en cours"}
+            print(f"Plat '{nom_plat}' ajouté à la commande.")
+        else:
+            print(f"Le plat '{nom_plat}' est déjà dans la commande.")
+
+    def annuler_commande(self):
+        self.__statut_commande = "annulée"
+        print("La commande a été annulée.")
+
+    def __calculer_total(self):
+        total = sum(plat["prix"] for plat in self.__plats_commandes.values())
+        return total
+
+    def afficher_commande(self):
+        print(f"Numéro de commande : {self.__numero_commande}")
+        print("Plats commandés:")
+        for nom_plat, details in self.__plats_commandes.items():
+            print(f"- {nom_plat}: {details['prix']} € ({details['statut']})")
+        total = self.__calculer_total()
+        print(f"Total à payer : {total} €")
+
+    def calculer_tva(self, taux_tva):
+        total = self.__calculer_total()
+        tva = total * (taux_tva / 100)
+        print(f"Montant de TVA ({taux_tva}%): {tva} €")
+
+# Exemple d'utilisation
+commande1 = Commande(numero_commande=1)
+
+# Ajout de plats à la commande
+commande1.ajouter_plat("Pizza Margherita", 12.5)
+commande1.ajouter_plat("Salade César", 8.75)
+commande1.ajouter_plat("Tiramisu", 6.0)
+
+# Affichage de la commande
+commande1.afficher_commande()
+
+# Calcul de la TVA
+commande1.calculer_tva(taux_tva=10)
+
+# Annulation de la commande
+commande1.annuler_commande()
+
+# Tentative d'ajout après annulation
+commande1.ajouter_plat("Spaghetti Bolognese", 15.0)
