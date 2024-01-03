@@ -2,11 +2,19 @@ class Rectangle:
     def __init__(self, longueur=0, largeur=0):
         self.longueur = longueur
         self.largeur = largeur
+    
+    def modifierRectangle(self, longueur, largeur):
+        self.longueur = longueur
+        self.largeur = largeur
 
     def afficherRectangle(self):
         print(f"Le rectangle à une longueur de", self.longueur, "et une largeur de", self.largeur)
-    
-# Instanciation de la classe
-rectangle = Rectangle(10,5)
 
+# Instanciation de la classe
+rectangle = Rectangle()
+
+rectangle.modifierRectangle(10,5)
+rectangle.afficherRectangle()
+
+rectangle.modifierRectangle(7,3)
 rectangle.afficherRectangle()
