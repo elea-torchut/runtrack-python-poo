@@ -1,59 +1,65 @@
 class Livre:
-    def __init__(self, titre = "", auteur = "", nbPage = 0, disponible = True):
-        self.titre = titre
-        self.auteur = auteur
-        self.nbPage = nbPage
-        self.disponible = disponible
+    def __init__(self,titre,nb_page,disponible):
+        self._titre = titre
+        self._nb_page = nb_page
+        self._disponible = disponible
+        self._emprun = False
 
-    def modifierTitre(self, titre):
-        self.titre = titre
+    def _gettitre(self):
+        return self._titre
     
-    def modifierAuteur(self, auteur):
-        self.auteur = auteur
+    def _settitre(self, nouveau_titre):
+        self._titre = nouveau_titre
 
-    def modifierNBPage(self, nbPage):
-        self.nbPage = nbPage
-        if not isinstance(nbPage, int):
-            print("Le livre doit contenir un nombre entier de page.")
+    def _getnb_page(self):
+        return self._nb_page
+    
+    def _setnb_page(self,nouveau_nb_page):
+        if nouveau_nb_page < 0:
+            print("le nouveau nombre de page doit être un entier positif")
+
+    def verification (self):
+        if self._disponible == True :
+            return self._disponible
         else:
-            self.nbPage = nbPage
+            self._disponible = False
 
-    def afficherBook(self):
-        if not isinstance(self.nbPage, int):
-            print("Le livre doit contenir un nombre entier de page.")
-            self.nbPage = 0
+    def emprunter (self):
+        if self.verification() == True:
+            print("vous empruntez le livre")
+            self._disponible = False
         else:
-            print(f"Le livre", self.titre, "a été écrit par", self.auteur, "et contient", self.nbPage, "pages.")
+            print("vous ne pouvez pas emprunter le livre")
+        self._emprun=True
 
-    def verification(self):
-        if self.disponible:
-            self.disponible = False
-        elif not self.disponible:
-            self.disponible = True
-
-    def emprunter(self):
-        if not self.verification():
-            print("Vous avez emprunté le livre.")
-        elif self.verification():
-            print("Le livre n'est pas disponible.")
-
-    def rendre(self):
-        if not self.verification():
-            print("Vous n'avez pas emprunter ce livre.")
-        elif self.verification():
-            print("Le livre a été rendu.")
-
-# Instanciation de la classe
-HarryPotter = Livre()
+    def rendre (self):
+        if self._emprun == True:
+            print("vous rendez votre livre à rendre")
+            self._disponible == False
+        else:
+            print("Vous n'avez pas de livre emprunter")
 
 
-HarryPotter.modifierTitre("Harry Potter")
-HarryPotter.modifierAuteur("J. K. Rowling")
-HarryPotter.modifierNBPage(240)
-HarryPotter.afficherBook()
-HarryPotter.modifierNBPage(239.5)
-HarryPotter.afficherBook()
-HarryPotter.rendre()
-HarryPotter.emprunter()
-HarryPotter.emprunter()
-HarryPotter.rendre()
+            
+
+            
+
+    livre = property(_getnb_page,_setnb_page)
+
+h1 = Livre("Harry Potter",500,True)
+print("Le livre est",h1._titre,"et il fait:",h1._nb_page,"pages")
+h1.emprunter()
+h1.emprunter()
+
+print('\n')
+
+h1 = Livre("Seigneur des anneaux",600,False)
+print("Le livre est",h1._titre,"et il fait:",h1._nb_page,"pages")
+h1.emprunter()
+
+print('\n')
+
+h1 = Livre("SDune",700,True)
+print("Le livre est",h1._titre,"et il fait:",h1._nb_page,"pages")
+h1.emprunter()
+h1.rendre()
