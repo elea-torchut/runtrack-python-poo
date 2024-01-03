@@ -1,0 +1,59 @@
+class Livre:
+    def __init__(self, titre = "", auteur = "", nbPage = 0, disponible = True):
+        self.titre = titre
+        self.auteur = auteur
+        self.nbPage = nbPage
+        self.disponible = disponible
+
+    def modifierTitre(self, titre):
+        self.titre = titre
+    
+    def modifierAuteur(self, auteur):
+        self.auteur = auteur
+
+    def modifierNBPage(self, nbPage):
+        self.nbPage = nbPage
+        if not isinstance(nbPage, int):
+            print("Le livre doit contenir un nombre entier de page.")
+        else:
+            self.nbPage = nbPage
+
+    def afficherBook(self):
+        if not isinstance(self.nbPage, int):
+            print("Le livre doit contenir un nombre entier de page.")
+            self.nbPage = 0
+        else:
+            print(f"Le livre", self.titre, "a été écrit par", self.auteur, "et contient", self.nbPage, "pages.")
+
+    def verification(self):
+        if self.disponible:
+            self.disponible = False
+        elif not self.disponible:
+            self.disponible = True
+
+    def emprunter(self):
+        if not self.verification():
+            print("Vous avez emprunté le livre.")
+        elif self.verification():
+            print("Le livre n'est pas disponible.")
+
+    def rendre(self):
+        if not self.verification():
+            print("Vous n'avez pas emprunter ce livre.")
+        elif self.verification():
+            print("Le livre a été rendu.")
+
+# Instanciation de la classe
+HarryPotter = Livre()
+
+
+HarryPotter.modifierTitre("Harry Potter")
+HarryPotter.modifierAuteur("J. K. Rowling")
+HarryPotter.modifierNBPage(240)
+HarryPotter.afficherBook()
+HarryPotter.modifierNBPage(239.5)
+HarryPotter.afficherBook()
+HarryPotter.rendre()
+HarryPotter.emprunter()
+HarryPotter.emprunter()
+HarryPotter.rendre()
