@@ -4,10 +4,12 @@ class Student:
         self.__prenom = prenom
         self.__numero_etudiant = numero_etudiant
         self.__credits = credits
+        self.__level = self.__studentEval()
 
     def add_credits(self, credits):
         if credits > 0:
             self.__credits += credits
+            self.__level = self.__studentEval()
             print(f"{credits} crédits ajoutés. Total de crédits : {self.__credits}")
         else:
             print("Veuillez fournir un nombre de crédits supérieur à zéro.")
@@ -15,13 +17,33 @@ class Student:
     def get_total_credits(self):
         return self.__credits
 
+    def studentInfo(self):
+        print(f"Informations de l'étudiant {self.__nom} {self.__prenom} (ID: {self.__numero_etudiant})")
+        print(f"Total de crédits : {self.__credits}")
+        print(f"Niveau d'évaluation : {self.__level}")
+
+    def __studentEval(self):
+        if self.__credits >= 90:
+            return "Excellent"
+        elif self.__credits >= 80:
+            return "Très bien"
+        elif self.__credits >= 70:
+            return "Bien"
+        elif self.__credits >= 60:
+            return "Passable"
+        else:
+            return "Insuffisant"
+
 # Instanciation de la classe avec l'étudiant John Doe
 john_doe = Student("Doe", "John", 0)
 
 # Ajout de crédits à trois reprises
-john_doe.add_credits(20)
-john_doe.add_credits(6)
-john_doe.add_credits(4)
+john_doe.add_credits(100)
+john_doe.add_credits(40)
+john_doe.add_credits(5)
+
+# Informations de l'étudiant
+john_doe.studentInfo()
 
 # Impression du total de crédits
 print(f"Le nombre de crédits de {john_doe._Student__prenom} {john_doe._Student__nom} est de {john_doe.get_total_credits()} points")
