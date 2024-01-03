@@ -1,0 +1,37 @@
+class Livre:
+    def __init__(self, titre = "", auteur = "", nbPage = 0):
+        self.titre = titre
+        self.auteur = auteur
+        self.nbPage = nbPage
+
+    def modifierTitre(self, titre):
+        self.titre = titre
+    
+    def modifierAuteur(self, auteur):
+        self.auteur = auteur
+
+    def modifierNBPage(self, nbPage):
+        self.nbPage = nbPage
+        if not isinstance(nbPage, int):
+            print("Le livre doit contenir un nombre entier de page.")
+        else:
+            self.nbPage = nbPage
+
+    def afficherBook(self):
+        if not isinstance(self.nbPage, int):
+            print("Le livre doit contenir un nombre entier de page.")
+            self.nbPage = 0
+        else:
+            print(f"Le livre", self.titre, "a été écrit par", self.auteur, "et contient", self.nbPage, "pages.")
+
+# Instanciation de la classe
+
+HarryPotter = Livre()
+
+
+HarryPotter.modifierTitre("Harry Potter")
+HarryPotter.modifierAuteur("J. K. Rowling")
+HarryPotter.modifierNBPage(240)
+HarryPotter.afficherBook()
+HarryPotter.modifierNBPage(239.5)
+HarryPotter.afficherBook()
