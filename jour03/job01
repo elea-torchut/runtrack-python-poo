@@ -1,0 +1,47 @@
+class Ville:
+    def __init__(self, nom, habitants):
+        self.__nom = nom
+        self.__habitants = habitants
+
+    def get_nom(self):
+        return self.__nom
+
+    def get_habitants(self):
+        return self.__habitants
+
+    def augmenter_population(self):
+        self.__habitants += 1
+
+
+class Personne:
+    def __init__(self, nom, age, ville):
+        self.__nom = nom
+        self.__age = age
+        self.__ville = ville
+
+    def ajouter_population(self):
+        self.__ville.augmenter_population()
+
+
+# Création des objets Ville
+paris = Ville("Paris", 1000000)
+marseille = Ville("Marseille", 861635)
+
+# Affichage du nombre d'habitants de chaque ville
+print(f"Nombre d'habitants de {paris.get_nom()}: {paris.get_habitants()}")
+print(f"Nombre d'habitants de {marseille.get_nom()}: {marseille.get_habitants()}")
+
+# Création des objets Personne
+john = Personne("John", 45, paris)
+myrtille = Personne("Myrtille", 4, paris)
+chloe = Personne("Chloé", 18, marseille)
+
+# Ajout de nouvelles personnes et affichage du nombre d'habitants après chaque ajout
+myrtille.ajouter_population()
+print(f"Nombre d'habitants de {paris.get_nom()} après l'arrivée de Myrtille: {paris.get_habitants()}")
+
+john.ajouter_population()
+print(f"Nombre d'habitants de {paris.get_nom()} après l'arrivée de John: {paris.get_habitants()}")
+
+chloe.ajouter_population()
+print(f"Nombre d'habitants de {marseille.get_nom()} après l'arrivée de Chloé: {marseille.get_habitants()}")
