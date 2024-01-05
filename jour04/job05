@@ -1,0 +1,21 @@
+import math
+
+class Forme:
+    def aire(self):
+        return 0
+    
+class Cercle(Forme):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def aire(self):
+        return math.pi * self.radius**2
+
+# Instanciation de la classe Cercle
+cercle = Cercle(radius=4)
+
+# Appel de la méthode aire de la classe Cercle
+resultat_aire_cercle = cercle.aire()
+
+# Affichage du résultat
+print("Aire du cercle:", resultat_aire_cercle)
