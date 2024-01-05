@@ -40,7 +40,4 @@ eleve1.afficherAge()  # Utilise la méthode redéfinie dans la classe Eleve
 
 # Instanciation d'un professeur avec l'âge par défaut (14 ans) et une matière enseignée
 professeur1 = Professeur(matiereEnseignee="Mathématiques")
-professeur1.afficherAge()
 professeur1.enseigner()
-professeur1.modifierAge(27)
-professeur1.afficherAge()
